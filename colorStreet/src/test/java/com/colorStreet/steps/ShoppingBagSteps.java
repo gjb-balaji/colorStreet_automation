@@ -43,6 +43,12 @@ public class ShoppingBagSteps extends ShoppingBagPage {
 	public void verify_user_selects_option (String text) {
 		clickButton(shopXpath(continueAsGuestBtn, text));
 	}
+	
+	@When ("^user searches with \"(.*)\" zipcode$")
+	public void user_searches_with_zipcode (String text) {
+		enterText(zipCodeTxt, text);
+		clickButton(searchBtn);
+	}
 
 	
 }

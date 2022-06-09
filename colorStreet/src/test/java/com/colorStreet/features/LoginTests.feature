@@ -12,5 +12,5 @@ Feature: color Street validation test
 		Then verify colorStree offer description as "Buy 3 Get 1 Free Discount"
 		And user "Checkout" from the cart page
 		And user opted as "Continue as Guest" option
-		When user enters 
+		When user searches with "07512" zipcode
 	

@@ -20,7 +20,9 @@ public class ShoppingBagPage extends BaseUtil {
 	public static String popUpReturnToCartLbl = "//a[text()='Proceed without Free Item']/preceding::a[text()='Return To Catalog'][1]";
 	
 	//missing item pop-up description
-	public static String zipCodeTxt = "(//div[@class='modal-header'])[last()]/preceding::div[5]";
+	public static String zipCodeTxt = "(//input[@id='txtZipCode'])[last()]";
+	public static String searchBtn = "(//a[@id='btnSearchZipcode'])[last()]";
+	
 	//aa
 	public static String firstName  = "//input[@placeholder='First Name ']";
 	public static String lastName  = "//input[@placeholder='Last Name ']";
