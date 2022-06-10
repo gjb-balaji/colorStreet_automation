@@ -1,9 +1,7 @@
 package com.colorStreet.commonUtils;
 
+import java.io.*;
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
@@ -26,7 +24,8 @@ public class BaseUtil {
 	public static Properties props = new Properties();
 
 	public static String dummyXpath = "//*[text()='dummyPath']";
-
+	
+	//Opening a browser
 	public static boolean openBrowser() {
 		try {
 			System.setProperty("webdriver.chrome.driver",
@@ -42,7 +41,8 @@ public class BaseUtil {
 			return false;
 		}
 	}
-
+ 
+	//Select a value from a drop down
 	public static boolean selectAValueFromDD(String xpath, String value) {
 		try {
 			WebElement ele = driver.findElement(By.xpath(xpath));
@@ -57,9 +57,9 @@ public class BaseUtil {
 		}
 	}
 
+	//launching an application
 	public static void launchApp() {
 		try {
-			// driver.manage().window().maximize();
 			driver.get(props.getProperty("url"));
 			driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
 			System.out.println("Application is launched");
@@ -69,6 +69,7 @@ public class BaseUtil {
 		}
 	}
 
+	//reading properties file
 	public static void initializeProps() {
 		try {
 			reader = new BufferedReader(
@@ -86,6 +87,7 @@ public class BaseUtil {
 		}
 	}
 
+	//constructing an Xpath using a text
 	public static String constructXpath(String value) {
 		try {
 			String orgXpath = dummyXpath.replace("dummyPath", value);
@@ -96,6 +98,7 @@ public class BaseUtil {
 		}
 	}
 
+	//entering a text value
 	public static void enterText(String path, String value) {
 		try {
 			driver.findElement(By.xpath(path)).sendKeys(value);
@@ -106,6 +109,7 @@ public class BaseUtil {
 		}
 	}
 
+	//clicking a button
 	public static void clickButton(String path) {
 		try {
 			WebDriverWait w = new WebDriverWait(driver, 20);
@@ -121,19 +125,7 @@ public class BaseUtil {
 		}
 	}
 
-//	public static void javaScriptclickButton(String path) {
-//		try {
-//			JavascriptExecutor js = (JavascriptExecutor)driver;
-//			List<WebElement> li = driver.findElements(By.xpath(path));
-//			js.executeScript("arguments[0].click();", li);
-//			//driver.findElement(By.xpath(path)).click();
-//			System.out.println("Click the button");
-//		} catch (Exception a) {
-//			a.printStackTrace();
-//			System.out.println("Not able to click the button");
-//		}
-//	}
-
+	//mouse hover on any web element
 	public static void mouseHover(String path) {
 		try {
 			Actions action = new Actions(driver);
@@ -146,11 +138,13 @@ public class BaseUtil {
 		}
 	}
 
+	//constructing an xpath using string replace method
 	public static String shopXpath(String xpath, String value) {
 		String myXpath = xpath.replace("dummy", value);
 		return myXpath;
 	}
 
+	//getting a web element text value
 	public static String getElementTextValue(String path) {
 		try {
 			driver.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
@@ -170,18 +164,15 @@ public class BaseUtil {
 		try {
 			String e = "";
 			WebDriverWait w = new WebDriverWait(driver, 20);
-			w.until(ExpectedConditions.elementToBeClickable(
-					By.xpath(path)));
-			List<WebElement> li = driver
-					.findElements(By.xpath(path));
-			for (int i = 0; i < 10; i++) {
-				if (i % 3 == 0 && i > 0) {
+			w.until(ExpectedConditions.elementToBeClickable(By.xpath(path)));
+			List<WebElement> li = driver.findElements(By.xpath(path));
+			for (int i = 1; i < 10; i ++) {
+				if (i % 3 == 0) {
 					e = li.get(i - 1).getText();
 					li.get(i - 1).click();
-					System.out.println(e);
 				}
 			}
-			// System.out.println("The text value is " + e.getText());
+			System.out.println("The text value is " + e);
 			return e;
 		} catch (Exception a) {
 			a.printStackTrace();

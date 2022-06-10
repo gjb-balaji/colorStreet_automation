@@ -13,4 +13,7 @@ Feature: color Street validation test
 		And user "Checkout" from the cart page
 		And user opted as "Continue as Guest" option
 		When user searches with "07512" zipcode
-	
+		And user selects 4th stylist "Morgan Hamway"
+	  When user Ship to the address by adding a new shipping address
+	  And user "Continue" with all the filled address details
+	  Then verify user landed on "Payment" page
