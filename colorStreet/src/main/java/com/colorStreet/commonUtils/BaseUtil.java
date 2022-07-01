@@ -61,7 +61,7 @@ public class BaseUtil {
 	public static void launchApp() {
 		try {
 			driver.get(props.getProperty("url"));
-			driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+			//driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
 			System.out.println("Application is launched");
 		} catch (Exception a) {
 			a.printStackTrace();
@@ -112,7 +112,7 @@ public class BaseUtil {
 	//clicking a button
 	public static void clickButton(String path) {
 		try {
-			WebDriverWait w = new WebDriverWait(driver, 20);
+			WebDriverWait w = new WebDriverWait(driver, 40);
 			w.until(ExpectedConditions.elementToBeClickable(By.xpath(path)));
 			WebElement ele = driver.findElement(By.xpath(path));
 			JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -162,12 +162,19 @@ public class BaseUtil {
 
 	public static String listElementClick(String path) {
 		try {
+			List<WebElement> li1 = driver.findElements(By.xpath("//div[@class='relative w-full h-full aspect-square']/div/span/img"));
+			for (WebElement ee : li1) {
+				((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ee);
+				
+			}
+			
 			String e = "";
 			WebDriverWait w = new WebDriverWait(driver, 20);
 			w.until(ExpectedConditions.elementToBeClickable(By.xpath(path)));
 			List<WebElement> li = driver.findElements(By.xpath(path));
 			for (int i = 1; i < 10; i ++) {
-				if (i % 3 == 0) {
+				((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", li.get(i - 1));
+				if (i <= 3) {
 					e = li.get(i - 1).getText();
 					li.get(i - 1).click();
 				}

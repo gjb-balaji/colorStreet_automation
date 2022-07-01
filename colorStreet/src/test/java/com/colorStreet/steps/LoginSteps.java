@@ -16,6 +16,7 @@ public class LoginSteps extends LoginPage {
 	
 	@When ("^user selects country as \"(.*)\"$")
 	public void user_selects_country (String value) throws Exception {
+		clickButton(countryBtn);
 		selectAValueFromDD(CountryDD, value);
 		clickButton(SubmitBtn);
 	}

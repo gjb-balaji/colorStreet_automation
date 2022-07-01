@@ -6,11 +6,13 @@ import com.colorStreet.commonUtils.BaseUtil;
 
 public class ShoppingBagPage extends BaseUtil {
 	
-	public static String shoppingBagBtn = "//span[text()='Shopping Bag']";
+	//public static String shoppingBagBtn = "//span[text()='Shopping Bag']";
+	public static String shoppingBagBtn = "//span[@class='relative inline-block w-5 h-[21px]']/span/img[@alt='cart']";
 	public static String colorStreetOfferLbl = "(//div[@class='itemdescription'])[last()]";
 	public static String checkOutBtn = "//a[@data-action='checkout']";
 	public static String returnToCartBtn = "//div[@class='navbar-form navbar-left']/a[text()='dummy']";
-	public static String continueAsGuestBtn = "//a[text()='dummy']";
+	public static String continueAsGuestBtn = "//button[text()='dummy']";
+	public static String continueCheckOutBtn = "//button[text()='CONTINUE TO CHECKOUT']";
 	public static String offerLbl = "//nav[@id='item-category-nav']/div/div/div/div";
 	
 	//missing item pop-up description
