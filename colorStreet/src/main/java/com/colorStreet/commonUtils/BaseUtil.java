@@ -22,7 +22,6 @@ public class BaseUtil {
 	public static WebDriver driver;
 	public static BufferedReader reader;
 	public static Properties props = new Properties();
-
 	public static String dummyXpath = "//*[text()='dummyPath']";
 	
 	//Opening a browser
@@ -115,7 +114,7 @@ public class BaseUtil {
 			WebDriverWait w = new WebDriverWait(driver, 40);
 			w.until(ExpectedConditions.elementToBeClickable(By.xpath(path)));
 			WebElement ele = driver.findElement(By.xpath(path));
-			JavascriptExecutor js = (JavascriptExecutor) driver;
+			JavascriptExecutor js = (JavascriptExecutor)driver;
 			js.executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');", ele);
 			ele.click();
 			System.out.println("Click the button");
@@ -149,7 +148,7 @@ public class BaseUtil {
 		try {
 			driver.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
 			WebElement ele = driver.findElement(By.xpath(path));
-			JavascriptExecutor js = (JavascriptExecutor) driver;
+			JavascriptExecutor js = (JavascriptExecutor)driver;
 			js.executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');", ele);
 			System.out.println("The text value is = " + ele.getText());
 			return ele.getText();
@@ -160,31 +159,42 @@ public class BaseUtil {
 		}
 	}
 
-	public static String listElementClick(String path) {
+	public static void listElementClick(String path) {
 		try {
-			List<WebElement> li1 = driver.findElements(By.xpath("//div[@class='relative w-full h-full aspect-square']/div/span/img"));
+			List<WebElement> li1 = driver.findElements(By.xpath(path));
+			String e = "";
+			int i = 1;
+			JavascriptExecutor js = (JavascriptExecutor)driver;
 			for (WebElement ee : li1) {
-				((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ee);
+				if (i <= 3) {
+					js.executeScript("arguments[0].scrollIntoView(true);", ee);
+					js.executeScript("arguments[0].click();", ee);
+				}
 				
 			}
 			
-			String e = "";
-			WebDriverWait w = new WebDriverWait(driver, 20);
-			w.until(ExpectedConditions.elementToBeClickable(By.xpath(path)));
-			List<WebElement> li = driver.findElements(By.xpath(path));
-			for (int i = 1; i < 10; i ++) {
-				((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", li.get(i - 1));
-				if (i <= 3) {
-					e = li.get(i - 1).getText();
-					li.get(i - 1).click();
-				}
-			}
-			System.out.println("The text value is " + e);
-			return e;
+//			List<WebElement> li1 = driver.findElements(By.xpath("//div[@class='relative w-full h-full aspect-square']/div/span/img"));
+//			for (WebElement ee : li1) {
+//				js.executeScript("arguments[0].scrollIntoView(true);", ee);
+//				
+//			}
+//			
+//			String e = "";
+//			WebDriverWait w = new WebDriverWait(driver, 20);
+//			w.until(ExpectedConditions.elementToBeClickable(By.xpath(path)));
+//			List<WebElement> li = driver.findElements(By.xpath(path));
+//			for (int i = 1; i < 10; i ++) {
+//				((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", li.get(i - 1));
+//				if (i <= 3) {
+//					e = li.get(i - 1).getText();
+//					li.get(i - 1).click();
+//				}
+//			}
+//			System.out.println("The text value is " + e);
+//			return e;
 		} catch (Exception a) {
 			a.printStackTrace();
 			System.out.println("Not able to get the label");
-			return null;
 		}
 	}
 

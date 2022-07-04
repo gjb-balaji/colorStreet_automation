@@ -22,30 +22,38 @@ public class ShoppingBagPage extends BaseUtil {
 	public static String popUpReturnToCartLbl = "//a[text()='Proceed without Free Item']/preceding::a[text()='Return To Catalog'][1]";
 	
 	//zip code search for a stylish
-	public static String zipCodeTxt = "(//input[@id='txtZipCode'])[last()]";
-	public static String searchBtn = "(//a[@id='btnSearchZipcode'])[last()]";
+	public static String zipCodeTxt = "//button[@aria-controls='headlessui-tabs-panel-4' and text()='Need a stylist?']/ancestor::div[@role='tablist']/following-sibling::div/..//input";
+	public static String searchBtn = "//button[@aria-controls='headlessui-tabs-panel-4' and text()='Need a stylist?']/ancestor::div[@role='tablist']/following-sibling::div/..//button[text()='Search']";
 	
 	//4th stylish
-	public static String stylishBtn = "//span[text()='dummy']/following::a[text()='Select Stylist'][1]";
+	public static String stylishBtn = "//span[text()='dummy']/following::button[text()='Select Stylist'][1]";
 		
 	//Add a new address
-	public static String firstNameTxt  = "//input[@id='Address_FirstName']";
-	public static String lastNameTxt  = "//input[@id='Address_LastName']";
-	public static String streetAddress1Txt ="//input[@id='Address_Address1']";
-	public static String streetAddress2Txt ="//input[@name='Address.Address2']";
-	public static String cityTxt = "//input[@id='Address_City']";
-	public static String pincodeTxt = "//input[@id='Address_Zip']";
-	public static String emailTxt = "//input[@id='Address_Email']";
-	public static String phoneNumberTxt = "//input[@id='Address_Phone']";
-	public static String provinceDD = "//Select[@name='Address.State']";
-	public static String shipToThisAddressBtn = "//a[@id='new-address']";
+	public static String firstNameTxt  = "//input[@name='FirstName']";
+	public static String lastNameTxt  = "//input[@name='LastName']";
+	public static String streetAddress1Txt ="//input[@name='Address1']";
+	public static String streetAddress2Txt ="//input[@name='Address2']";
+	public static String cityTxt = "//input[@name='City']";
+	public static String pincodeTxt = "//input[@name='Zip']";
+	public static String emailTxt = "//input[@name='Email']";
+	public static String phoneNumberTxt = "//input[@name='Phone']";
+	public static String provinceDD = "//select[@name='State']";
+	public static String shipToThisAddressBtn = "//button[text() = 'Ship To This Address']";
 	
 	
 	//continue on address
-	public static String a = "//h3[text()='Address Validation']";
-	public static String continueBtn = "//a[text()='dummy']";
-	public static String paymentLbl = "//main[@id='site-content']/h2";
+	public static String a = "//span[text() = 'Entered Address:']";
+	public static String continueBtn = "//button[text() = 'Continue']";
+//	public static String paymentLbl = "//main[@id='site-content']/h2";
 	
+	//payment page
+	public static String Namecard = "//input[@name = 'nameoncard']";
+	public static String CardNo = "//input[@placeholder= 'Card Number']";
+	public static String month = "//select[@name= 'expmonth']";
+	public static String Year = "//select[@name= 'expyear']";
+	public static String Cvv = "//input[@placeholder= 'CVV']";	
+	public static String click="//span[text()='My billing address is the same as my shipping address']";
+	public static String SaveContiune = "//button[text()= 'SAVE & CONTINUE']";
 	
 	public static void getPopUpText () {
 		try {
