@@ -1,7 +1,7 @@
 package com.colorStreet.steps;
 
 import org.junit.Assert;
-
+import java.util.concurrent.TimeUnit;
 import com.colorStreet.pages.ShoppingBagPage;
 
 import io.cucumber.java.en.And;
@@ -28,6 +28,7 @@ public class ShoppingBagSteps extends ShoppingBagPage {
 	@And ("^user selects a stylist \"(.*)\"$")
 	public void user_selects_stylist (String text) {
 		clickButton(shopXpath(stylishBtn, text));
+		
 	}
 	
 	@And ("^user Ship to the address by adding a new shipping address$")
@@ -36,22 +37,14 @@ public class ShoppingBagSteps extends ShoppingBagPage {
 		enterText(lastNameTxt, "Ship LName");
 		enterText(streetAddress1Txt, "Ship Address one");
 		enterText(streetAddress2Txt, "Ship Address two");
-		selectAValueFromDD(provinceDD, "Manitoba");
+		selectAValueFromDD(provinceDD, "New York");
 		enterText(cityTxt, "Brandon");
 		enterText(pincodeTxt, "33578");
 		enterText(emailTxt, "test@gmail.com");
 		enterText(phoneNumberTxt, "9876543210");
 		clickButton(shipToThisAddressBtn);
-	}
-	
-	@And ("^user \"(.*)\" with all the filled address details$")
-	public void user_filled_address_details (String text) {
-		clickButton(shopXpath(continueBtn, text));
-	}
-	
-	@And ("^verify user landed on \"(.*)\" page$")
-	public void user_landed_on_page (String text) {
-		//Assert.assertEquals(text, getElementTextValue(paymentLbl));
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		clickButton(continueBtn);
 	}
 	
 }

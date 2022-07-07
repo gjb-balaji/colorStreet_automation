@@ -34,35 +34,27 @@ public class ShoppingBagPage extends BaseUtil {
 	public static String streetAddress1Txt ="//input[@name='Address1']";
 	public static String streetAddress2Txt ="//input[@name='Address2']";
 	public static String cityTxt = "//input[@name='City']";
+	public static String provinceDD = "//select[@name='State']";
 	public static String pincodeTxt = "//input[@name='Zip']";
 	public static String emailTxt = "//input[@name='Email']";
-	public static String phoneNumberTxt = "//input[@name='Phone']";
-	public static String provinceDD = "//select[@name='State']";
-	public static String shipToThisAddressBtn = "//button[text() = 'Ship To This Address']";
-	
+	public static String phoneNumberTxt = "//input[@name='Phone']";	
+//	public static String shipToThisAddressBtn = "//button[text() = 'Ship To This Address']";
+	public static String shipToThisAddressBtn="(//button[text() = 'Ship To This Address'])[2]";
 	
 	//continue on address
 	public static String a = "//span[text() = 'Entered Address:']";
 	public static String continueBtn = "//button[text() = 'Continue']";
 //	public static String paymentLbl = "//main[@id='site-content']/h2";
 	
-	//payment page
-	public static String Namecard = "//input[@name = 'nameoncard']";
-	public static String CardNo = "//input[@placeholder= 'Card Number']";
-	public static String month = "//select[@name= 'expmonth']";
-	public static String Year = "//select[@name= 'expyear']";
-	public static String Cvv = "//input[@placeholder= 'CVV']";	
-	public static String click="//span[text()='My billing address is the same as my shipping address']";
-	public static String SaveContiune = "//button[text()= 'SAVE & CONTINUE']";
-	
-	public static void getPopUpText () {
-		try {
-			System.out.println(driver.findElement(By.xpath(freeItemMissingLbl)).getText() 
-					+ " " + driver.findElement(By.xpath(dontForgetLbl)).getText());  
-					//+ " " + driver.findElement(By.xpath(popUpOfferLbl)).getText());
-		} catch (Exception a) {
-			a.printStackTrace();
-		}
-	}
+		
+//	public static void getPopUpText () {
+//		try {
+//			System.out.println(driver.findElement(By.xpath(freeItemMissingLbl)).getText() 
+//					+ " " + driver.findElement(By.xpath(dontForgetLbl)).getText());  
+//					//+ " " + driver.findElement(By.xpath(popUpOfferLbl)).getText());
+//		} catch (Exception a) {
+//			a.printStackTrace();
+//		}
+//	}
 	
 }

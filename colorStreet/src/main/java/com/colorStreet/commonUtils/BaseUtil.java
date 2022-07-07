@@ -198,6 +198,18 @@ public class BaseUtil {
 		}
 	}
 
+	public static void jsenterText (String xpath, String text) {
+		try {
+			WebElement ee = driver.findElement(By.xpath(xpath));
+			WebDriverWait w = new WebDriverWait(driver, 100);
+			w.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
+			JavascriptExecutor js = (JavascriptExecutor)driver;
+			js. executeScript("arguments[0].value='" + text + "'", ee);
+		} catch (Exception a) {
+			a.printStackTrace();
+		}
+	}
+	
 	public static void selectAValue() {
 		try {
 			List<WebElement> li = driver
