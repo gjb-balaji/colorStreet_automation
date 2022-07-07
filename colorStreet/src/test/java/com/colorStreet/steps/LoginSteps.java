@@ -32,6 +32,7 @@ public class LoginSteps extends LoginPage {
 	
 	@And ("^user logout from the application$")
 	public void user_logout_from_the_app () {
+		clickButton(userLoginBtn);
 		clickButton(signOutBtn);
 	}
 	

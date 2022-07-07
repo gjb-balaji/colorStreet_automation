@@ -3,6 +3,7 @@ package com.colorStreet.runners;
 import org.junit.runner.RunWith;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
+//import io.cucumber.testng.AbstractTestNGCucumberTests;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
@@ -11,5 +12,6 @@ import io.cucumber.junit.CucumberOptions;
 		plugin = {"html:target/cucumberReport.html"}
 		)
 public class TestRunner {
+	//public class TestRunner extends AbstractTestNGCucumberTests {
 
 }

@@ -10,6 +10,7 @@ public class HomeSteps extends HomePage{
 	public void user_select_from_dropdown (String list, String drop) throws Exception {
 		mouseHover(shopXpath(shopDD, drop));
 		clickButton(shopXpath(solidColorListItem, list));
+		mouseHover(shopXpath(shopDD, drop));
 	}
 	
 	@And ("^user select items from the item result page$")
@@ -22,4 +23,5 @@ public class HomeSteps extends HomePage{
 	public void user_navigates_to_screen (String cart) {
 		clickButton(cartBagBtn);
 	}
+	
 }

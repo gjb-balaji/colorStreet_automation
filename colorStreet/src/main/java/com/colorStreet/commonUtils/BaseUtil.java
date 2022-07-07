@@ -44,6 +44,8 @@ public class BaseUtil {
 	//Select a value from a drop down
 	public static boolean selectAValueFromDD(String xpath, String value) {
 		try {
+			WebDriverWait w = new WebDriverWait(driver, 2000);
+			w.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
 			WebElement ele = driver.findElement(By.xpath(xpath));
 			Select sel = new Select(ele);
 			sel.selectByVisibleText(value);
@@ -100,6 +102,8 @@ public class BaseUtil {
 	//entering a text value
 	public static void enterText(String path, String value) {
 		try {
+			WebDriverWait w = new WebDriverWait(driver, 1000);
+			w.until(ExpectedConditions.elementToBeClickable(By.xpath(path)));
 			driver.findElement(By.xpath(path)).sendKeys(value);
 			System.out.println("Entered " + value + " to the text field");
 		} catch (Exception a) {
@@ -111,7 +115,7 @@ public class BaseUtil {
 	//clicking a button
 	public static void clickButton(String path) {
 		try {
-			WebDriverWait w = new WebDriverWait(driver, 40);
+			WebDriverWait w = new WebDriverWait(driver, 2000);
 			w.until(ExpectedConditions.elementToBeClickable(By.xpath(path)));
 			WebElement ele = driver.findElement(By.xpath(path));
 			JavascriptExecutor js = (JavascriptExecutor)driver;
@@ -146,7 +150,9 @@ public class BaseUtil {
 	//getting a web element text value
 	public static String getElementTextValue(String path) {
 		try {
-			driver.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
+			WebDriverWait w = new WebDriverWait(driver, 2000);
+			w.until(ExpectedConditions.presenceOfElementLocated(By.xpath(path)));
+			//driver.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
 			WebElement ele = driver.findElement(By.xpath(path));
 			JavascriptExecutor js = (JavascriptExecutor)driver;
 			js.executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');", ele);

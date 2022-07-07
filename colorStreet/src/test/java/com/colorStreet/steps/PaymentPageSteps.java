@@ -12,16 +12,18 @@ public class PaymentPageSteps extends PaymentPage {
 	
 	@Then ("^verify user continue with all the filled payment details$")
 	public void user_continue_with_all_filled () throws Exception {
-		enterText(nameCardTxt, "my name");
-		Thread.sleep(500);
+		//Thread.sleep(3000);
+		enterText(nameCardTxt, "myname_card");
+		Thread.sleep(2000);
 		driver.switchTo().frame(driver.findElement(By.xpath("//iframe[contains(@class,'w-full border-box')]")));
-		jsenterText(cardNumberTxt, "4111 1111 1111 1111");
+		enterText(cardNumberTxt, "4111111111111111");
 		driver.switchTo().defaultContent();
 		selectAValueFromDD(month, "April");
 		selectAValueFromDD(Year, "2024");
 		enterText(Cvv, "123");
-		clickButton(maillingChkBox);
+		//clickButton(maillingChkBox);
 		clickButton(SaveContiune);	
+		Thread.sleep(500);
 	}
 	
 	@Then ("^verify user can \"(.*)\"$")

@@ -15,12 +15,14 @@ public class ShoppingBagSteps extends ShoppingBagPage {
 	}
 	
 	@When ("^user opted as \"(.*)\" option$")
-	public void verify_user_selects_option (String text) {
+	public void verify_user_selects_option (String text) throws Exception {
+		Thread.sleep(1000);
 		clickButton(shopXpath(continueAsGuestBtn, text));
 	}
 	
 	@When ("^user searches with \"(.*)\" zipcode$")
-	public void user_searches_with_zipcode (String text) {
+	public void user_searches_with_zipcode (String text) throws Exception {
+		//Thread.sleep(1500);
 		enterText(zipCodeTxt, text);
 		clickButton(searchBtn);
 	}
@@ -32,7 +34,8 @@ public class ShoppingBagSteps extends ShoppingBagPage {
 	}
 	
 	@And ("^user Ship to the address by adding a new shipping address$")
-	public void user_Ship_to_address () {
+	public void user_Ship_to_address () throws Exception {
+		//Thread.sleep(1000);
 		enterText(firstNameTxt, "Ship FName");
 		enterText(lastNameTxt, "Ship LName");
 		enterText(streetAddress1Txt, "Ship Address one");
