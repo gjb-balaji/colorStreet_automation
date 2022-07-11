@@ -155,6 +155,7 @@ public class BaseUtil {
 			//driver.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
 			WebElement ele = driver.findElement(By.xpath(path));
 			JavascriptExecutor js = (JavascriptExecutor)driver;
+			js.executeScript("arguments[0].scrollIntoView(true);", ele);
 			js.executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');", ele);
 			System.out.println("The text value is = " + ele.getText());
 			return ele.getText();

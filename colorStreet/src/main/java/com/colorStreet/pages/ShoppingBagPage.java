@@ -38,8 +38,8 @@ public class ShoppingBagPage extends BaseUtil {
 	public static String pincodeTxt = "//input[@name='Zip']";
 	public static String emailTxt = "//input[@name='Email']";
 	public static String phoneNumberTxt = "//input[@name='Phone']";	
-//	public static String shipToThisAddressBtn = "//button[text() = 'Ship To This Address']";
-	public static String shipToThisAddressBtn="(//button[text() = 'Ship To This Address'])[2]";
+	public static String shipToThisAddressBtn = "//button[text() = 'Ship To This Address']";
+//	public static String shipToThisAddressBtn="(//button[text() = 'Ship To This Address'])[2]";
 	
 	//continue on address
 	public static String a = "//span[text() = 'Entered Address:']";
