@@ -1,5 +1,6 @@
 package com.colorStreet.commonUtils;
 
+import java.awt.Robot;
 import java.io.*;
 import java.io.BufferedReader;
 import java.util.List;
@@ -13,6 +14,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.interactions.Coordinates;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -231,4 +235,26 @@ public class BaseUtil {
 		}
 	}
 
+	public static void mouseMoving (String path) {
+		try {
+			//WebElement ele = driver.findElement(By.xpath(path));
+			//Actions action = new Actions(driver);
+			//Coordinates c = ((RemoteWebElement)ele).getCoordinates();
+	       // ((RemoteWebDriver) driver).getMouse().mouseMove(c);
+//			action.moveToElement(ele);
+//			Robot robot = new Robot();
+//			robot.mouseMove(coordinates.x,coordinates.y+80);
+//			action.keyDown(Keys.CONTROL)
+//			.moveByOffset( 10, 25 )
+//			.clickAndHold(ele)
+//			.build().perform();
+			
+			System.out.println("hovering");
+			
+		} catch (Exception a) {
+			a.printStackTrace();
+			System.out.println("Not able to get the label");
+		}
+	}
+	
 }

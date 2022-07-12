@@ -21,8 +21,7 @@ public class ShoppingBagSteps extends ShoppingBagPage {
 	}
 	
 	@When ("^user searches with \"(.*)\" zipcode$")
-	public void user_searches_with_zipcode (String text) throws Exception {
-		//Thread.sleep(1500);
+	public void user_searches_with_zipcode (String text) {
 		enterText(zipCodeTxt, text);
 		clickButton(searchBtn);
 	}
@@ -34,17 +33,16 @@ public class ShoppingBagSteps extends ShoppingBagPage {
 	}
 	
 	@And ("^user Ship to the address by adding a new shipping address$")
-	public void user_Ship_to_address () throws Exception {
-		//Thread.sleep(1000);
-		enterText(firstNameTxt, "Ship FName");
-		enterText(lastNameTxt, "Ship LName");
-		enterText(streetAddress1Txt, "Ship Address one");
-		enterText(streetAddress2Txt, "Ship Address two");
-		selectAValueFromDD(provinceDD, "New York");
-		enterText(cityTxt, "Brandon");
-		enterText(pincodeTxt, "33578");
-		enterText(emailTxt, "test@gmail.com");
-		enterText(phoneNumberTxt, "9876543210");
+	public void user_Ship_to_address () {
+		enterText(firstNameTxt, props.getProperty("ship_firstName"));
+		enterText(lastNameTxt, props.getProperty("ship_lastName"));
+		enterText(streetAddress1Txt, props.getProperty("ship_address1"));
+		enterText(streetAddress2Txt, props.getProperty("ship_address2"));
+		selectAValueFromDD(provinceDD, props.getProperty("ship_province"));
+		enterText(cityTxt, props.getProperty("ship_city"));
+		enterText(pincodeTxt, props.getProperty("ship_pinCode"));
+		enterText(emailTxt, props.getProperty("ship_email"));
+		enterText(phoneNumberTxt, props.getProperty("ship_phoneNumber"));
 		clickButton(shipToThisAddressBtn);
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		clickButton(continueBtn);

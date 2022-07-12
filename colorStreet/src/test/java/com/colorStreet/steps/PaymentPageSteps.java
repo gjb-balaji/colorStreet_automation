@@ -12,15 +12,15 @@ public class PaymentPageSteps extends PaymentPage {
 	
 	@Then ("^verify user continue with all the filled payment details$")
 	public void user_continue_with_all_filled () throws Exception {
-		//Thread.sleep(3000);
-		enterText(nameCardTxt, "myname_card");
-		Thread.sleep(2000);
-		driver.switchTo().frame(driver.findElement(By.xpath("//iframe[contains(@class,'w-full border-box')]")));
-		enterText(cardNumberTxt, "4111111111111111");
+		enterText(nameCardTxt, props.getProperty("card_name"));
+		Thread.sleep(3000);
+		driver.switchTo().frame(driver.findElement(By.xpath(frame)));
+		enterText(cardNumberTxt, props.getProperty("card_number"));
+		Thread.sleep(1000);
 		driver.switchTo().defaultContent();
-		selectAValueFromDD(month, "April");
-		selectAValueFromDD(Year, "2024");
-		enterText(Cvv, "123");
+		selectAValueFromDD(month, props.getProperty("card_month"));
+		selectAValueFromDD(Year, props.getProperty("card_year"));
+		enterText(Cvv, props.getProperty("card_CVV"));
 		//clickButton(maillingChkBox);
 		clickButton(SaveContiune);	
 		Thread.sleep(500);

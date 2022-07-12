@@ -14,4 +14,5 @@ public class PaymentPage extends BaseUtil {
 //	public static String placeOrderBtn = "//label[text()='Sign up for Color Street emails - receive product news tips, and more!']/preceding::button[1]";
 	public static String maillingChkBox = "//*[local-name='svg' and contains(@class, 'transition text-blackest')]/*[local-name='path']";
 	public static String placeOrderBtn = "//input[@id='terms']/parent::div/following-sibling::div/button";
+	public static String frame = "//iframe[contains(@class,'w-full border-box')]";
 }
