@@ -27,8 +27,8 @@ public class BaseUtil {
 	public static BufferedReader reader;
 	public static Properties props = new Properties();
 	public static String dummyXpath = "//*[text()='dummyPath']";
-	
-	//Opening a browser
+
+	// Opening a browser
 	public static boolean openBrowser() {
 		try {
 			System.setProperty("webdriver.chrome.driver",
@@ -44,8 +44,8 @@ public class BaseUtil {
 			return false;
 		}
 	}
- 
-	//Select a value from a drop down
+
+	// Select a value from a drop down
 	public static boolean selectAValueFromDD(String xpath, String value) {
 		try {
 			WebDriverWait w = new WebDriverWait(driver, 2000);
@@ -62,11 +62,11 @@ public class BaseUtil {
 		}
 	}
 
-	//launching an application
+	// launching an application
 	public static void launchApp() {
 		try {
 			driver.get(props.getProperty("url"));
-			//driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+			// driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
 			System.out.println("Application is launched");
 		} catch (Exception a) {
 			a.printStackTrace();
@@ -74,7 +74,7 @@ public class BaseUtil {
 		}
 	}
 
-	//reading properties file
+	// reading properties file
 	public static void initializeProps() {
 		try {
 			reader = new BufferedReader(
@@ -92,7 +92,7 @@ public class BaseUtil {
 		}
 	}
 
-	//constructing an Xpath using a text
+	// constructing an Xpath using a text
 	public static String constructXpath(String value) {
 		try {
 			String orgXpath = dummyXpath.replace("dummyPath", value);
@@ -103,7 +103,7 @@ public class BaseUtil {
 		}
 	}
 
-	//entering a text value
+	// entering a text value
 	public static void enterText(String path, String value) {
 		try {
 			WebDriverWait w = new WebDriverWait(driver, 1000);
@@ -116,13 +116,13 @@ public class BaseUtil {
 		}
 	}
 
-	//clicking a button
+	// clicking a button
 	public static void clickButton(String path) {
 		try {
 			WebDriverWait w = new WebDriverWait(driver, 2000);
 			w.until(ExpectedConditions.elementToBeClickable(By.xpath(path)));
 			WebElement ele = driver.findElement(By.xpath(path));
-			JavascriptExecutor js = (JavascriptExecutor)driver;
+			JavascriptExecutor js = (JavascriptExecutor) driver;
 			js.executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');", ele);
 			ele.click();
 			System.out.println("Click the button");
@@ -132,7 +132,7 @@ public class BaseUtil {
 		}
 	}
 
-	//mouse hover on any web element
+	// mouse hover on any web element
 	public static void mouseHover(String path) {
 		try {
 			Actions action = new Actions(driver);
@@ -145,20 +145,20 @@ public class BaseUtil {
 		}
 	}
 
-	//constructing an xpath using string replace method
+	// constructing an xpath using string replace method
 	public static String shopXpath(String xpath, String value) {
 		String myXpath = xpath.replace("dummy", value);
 		return myXpath;
 	}
 
-	//getting a web element text value
+	// getting a web element text value
 	public static String getElementTextValue(String path) {
 		try {
 			WebDriverWait w = new WebDriverWait(driver, 2000);
 			w.until(ExpectedConditions.presenceOfElementLocated(By.xpath(path)));
-			//driver.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
+			// driver.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
 			WebElement ele = driver.findElement(By.xpath(path));
-			JavascriptExecutor js = (JavascriptExecutor)driver;
+			JavascriptExecutor js = (JavascriptExecutor) driver;
 			js.executeScript("arguments[0].scrollIntoView(true);", ele);
 			js.executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');", ele);
 			System.out.println("The text value is = " + ele.getText());
@@ -175,52 +175,32 @@ public class BaseUtil {
 			List<WebElement> li1 = driver.findElements(By.xpath(path));
 			String e = "";
 			int i = 1;
-			JavascriptExecutor js = (JavascriptExecutor)driver;
+			JavascriptExecutor js = (JavascriptExecutor) driver;
 			for (WebElement ee : li1) {
 				if (i <= 3) {
 					js.executeScript("arguments[0].scrollIntoView(true);", ee);
 					js.executeScript("arguments[0].click();", ee);
 				}
-				
+
 			}
-			
-//			List<WebElement> li1 = driver.findElements(By.xpath("//div[@class='relative w-full h-full aspect-square']/div/span/img"));
-//			for (WebElement ee : li1) {
-//				js.executeScript("arguments[0].scrollIntoView(true);", ee);
-//				
-//			}
-//			
-//			String e = "";
-//			WebDriverWait w = new WebDriverWait(driver, 20);
-//			w.until(ExpectedConditions.elementToBeClickable(By.xpath(path)));
-//			List<WebElement> li = driver.findElements(By.xpath(path));
-//			for (int i = 1; i < 10; i ++) {
-//				((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", li.get(i - 1));
-//				if (i <= 3) {
-//					e = li.get(i - 1).getText();
-//					li.get(i - 1).click();
-//				}
-//			}
-//			System.out.println("The text value is " + e);
-//			return e;
 		} catch (Exception a) {
 			a.printStackTrace();
 			System.out.println("Not able to get the label");
 		}
 	}
 
-	public static void jsenterText (String xpath, String text) {
+	public static void jsenterText(String xpath, String text) {
 		try {
 			WebElement ee = driver.findElement(By.xpath(xpath));
 			WebDriverWait w = new WebDriverWait(driver, 100);
 			w.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
-			JavascriptExecutor js = (JavascriptExecutor)driver;
-			js. executeScript("arguments[0].value='" + text + "'", ee);
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			js.executeScript("arguments[0].value='" + text + "'", ee);
 		} catch (Exception a) {
 			a.printStackTrace();
 		}
 	}
-	
+
 	public static void selectAValue() {
 		try {
 			List<WebElement> li = driver
@@ -235,12 +215,12 @@ public class BaseUtil {
 		}
 	}
 
-	public static void mouseMoving (String path) {
+	public static void mouseMoving(String path) {
 		try {
-			//WebElement ele = driver.findElement(By.xpath(path));
-			//Actions action = new Actions(driver);
-			//Coordinates c = ((RemoteWebElement)ele).getCoordinates();
-	       // ((RemoteWebDriver) driver).getMouse().mouseMove(c);
+			// WebElement ele = driver.findElement(By.xpath(path));
+			// Actions action = new Actions(driver);
+			// Coordinates c = ((RemoteWebElement)ele).getCoordinates();
+			// ((RemoteWebDriver) driver).getMouse().mouseMove(c);
 //			action.moveToElement(ele);
 //			Robot robot = new Robot();
 //			robot.mouseMove(coordinates.x,coordinates.y+80);
@@ -248,13 +228,13 @@ public class BaseUtil {
 //			.moveByOffset( 10, 25 )
 //			.clickAndHold(ele)
 //			.build().perform();
-			
+
 			System.out.println("hovering");
-			
+
 		} catch (Exception a) {
 			a.printStackTrace();
 			System.out.println("Not able to get the label");
 		}
 	}
-	
+
 }
